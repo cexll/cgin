@@ -1,10 +1,20 @@
 package main
 
 import (
+	"log"
 	"net/http"
+	"time"
 
 	"cgin"
 )
+
+func onlyForV2() cgin.HandlerFunc {
+	return func(c *cgin.Context) {
+		t := time.Now()
+		c.Fail(500, "Internal Server Error")
+		log.Printf("[%d] %s in %v for group v2", c.StatusCode, c.Req.RequestURI, time.Since(t))
+	}
+}
 
 func main() {
 	r := cgin.New()
@@ -24,17 +34,18 @@ func main() {
 		})
 	}
 	v2 := r.Group("/v2")
+	v2.Use(onlyForV2())
 	{
 		v2.GET("/hello/:name", func(c *cgin.Context) {
 			c.String(http.StatusOK, "Hello %s, you're at %s\n", c.Param("name"), c.Path)
 		})
 
-		v2.POST("/login", func(c *cgin.Context) {
-			c.JSON(http.StatusOK, cgin.H{
-				"username": c.PostForm("username"),
-				"password": c.PostForm("password"),
-			})
-		})
+		//v2.POST("/login", func(c *cgin.Context) {
+		//	c.JSON(http.StatusOK, cgin.H{
+		//		"username": c.PostForm("username"),
+		//		"password": c.PostForm("password"),
+		//	})
+		//})
 	}
 	//r.GET("/hello", func(c *cgin.Context) {
 	//	//
