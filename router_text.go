@@ -1,4 +1,4 @@
-package cgin
+package lin
 
 import (
 	"fmt"
@@ -28,7 +28,7 @@ func TestParsePattern(t *testing.T) {
 
 func TestGetRoute(t *testing.T) {
 	r := newTestRouter()
-	n, ps := r.getRoute("GET", "/hello/cgin")
+	n, ps := r.getRoute("GET", "/hello/lin")
 
 	if n == nil {
 		t.Fatal("nil shouldn't be returned")

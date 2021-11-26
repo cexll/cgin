@@ -1,4 +1,4 @@
-package cgin
+package lin
 
 import (
 	"log"

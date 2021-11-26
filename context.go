@@ -1,4 +1,4 @@
-package cgin
+package lin
 
 import (
 	"encoding/json"
@@ -17,7 +17,7 @@ type Context struct {
 	StatusCode int
 	handlers   []HandlerFunc
 	index      int
-	engine *Engine
+	engine     *Engine
 }
 
 func newContext(w http.ResponseWriter, req *http.Request) *Context {

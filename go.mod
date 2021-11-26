@@ -1,3 +1,3 @@
-module github.com/cexll/cgin
+module github.com/cexll/lin
 
 go 1.15

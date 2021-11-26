@@ -1,4 +1,4 @@
-package cgin
+package lin
 
 import (
 	"html/template"
@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// HandlerFunc defines the request handler used by cgin
+// HandlerFunc defines the request handler used by lin
 type HandlerFunc func(*Context)
 
 type RouterGroup struct {
