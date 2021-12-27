@@ -38,8 +38,8 @@ func TestGetRoute(t *testing.T) {
 		t.Fatal("should match /hello/:name")
 	}
 
-	if ps["name"] != "cexll" {
-		t.Fatal("name should be equal to 'cexll'")
+	if ps["name"] != "lin" {
+		t.Fatal("name should be equal to 'lin'")
 	}
 
 	fmt.Printf("metched path: %s, params['name']: %s\n", n.pattern, ps["name"])
